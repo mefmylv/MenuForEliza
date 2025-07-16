@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-zd7yx#d$$!@gw7)_71!+dnwdrk=-r*w3x@$(_00%pe7edozl8)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'menu_fo_Eliza.urls'
+ROOT_URLCONF = 'menu_for_Eliza.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'menu_fo_Eliza.wsgi.application'
+WSGI_APPLICATION = 'menu_for_Eliza.wsgi.application'
 
 
 # Database
