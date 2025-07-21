@@ -1,0 +1,18 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+
+
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Open HTML in Opera GX",
+      "type": "chrome",
+      "request": "launch",
+      "file": "${file}",
+      "runtimeExecutable": "C:\\Users\\Emir\\AppData\\Local\\Programs\\Opera GX\\opera.exe",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
