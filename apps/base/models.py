@@ -31,7 +31,7 @@ class Foods(models.Model):
 
     )
     title = models.CharField(max_length=155, verbose_name="Название еды")
-    image = models.ImageField(verbose_name='Картинка еды')
+    image = models.ImageField(upload_to='foods/', verbose_name='Картинка еды')
     description = models.TextField(verbose_name='Описание')
 
     class Meta:
@@ -41,7 +41,7 @@ class Foods(models.Model):
 
 class About_us(models.Model):
     chefs_name = models.CharField(max_length=155, verbose_name='Имена поваров')
-    chefs_photos = models.ImageField(verbose_name='Фото шефа')
+    chefs_photos = models.ImageField(upload_to='chefs/', verbose_name='Фото шефа')
 
     class Meta:
         verbose_name= 'О нас'

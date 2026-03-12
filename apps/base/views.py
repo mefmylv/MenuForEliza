@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from apps.base.models import Foods, Category_food
-import requests
 from django.shortcuts import render, redirect
-from apps.base.models import *
+from django.contrib import messages
+from apps.base.models import Foods, Category_food, About_us
+import requests
+import os
 
 def reservation(request):
     categories = Category_food.objects.all()
@@ -36,11 +36,14 @@ def home(request):
     return render(request, 'view/index.html')
 
 def send_telegram_message(text):
-    token = '7778964806:AAH1vN4h_IxT7z2epyNMfoqjYjIRzI4zNfc'
-    chat_id = '5000264641'  # ← замени!
+    token = os.getenv('TELEGRAM_BOT_TOKEN', '7778964806:AAH1vN4h_IxT7z2epyNMfoqjYjIRzI4zNfc')
+    chat_id = os.getenv('TELEGRAM_CHAT_ID', '5000264641')
     url = f'https://api.telegram.org/bot{token}/sendMessage'
     data = {'chat_id': chat_id, 'text': text}
-    requests.post(url, data=data)
+    try:
+        requests.post(url, data=data, timeout=10)
+    except Exception as e:
+        print(f"Error sending telegram message: {e}")
 
 def reservation_submit(request):
     if request.method == 'POST':
@@ -50,7 +53,8 @@ def reservation_submit(request):
 
         message = f"🥗 Новая заявка на заказ!\nИмя: {name}\nКатегория: {category}\nБлюдо: {food}"
         send_telegram_message(message)
+        messages.success(request, "Ваш заказ успешно отправлен!")
 
-        return redirect('reservation_submit')  # или куда нужно
+        return redirect('reservation')
     else:
-        return redirect('reservation')  # если не POST
+        return redirect('reservation')
